@@ -270,3 +270,15 @@
   color: hsl(330, 80%, 72%);
   border: 1px solid hsla(330, 80%, 60%, 0.2);
 }
+
+/* ── Equation blocks ── */
+.equation-box {
+  background: hsl(220, 18%, 7%);
+  border: 1px solid hsla(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: hsl(160, 84%, 55%);
+  overflow-x: auto;
+}

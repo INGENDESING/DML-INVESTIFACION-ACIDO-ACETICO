@@ -1,30 +1,22 @@
-import { comparisonData, radarData } from '@/data/market';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Legend } from 'recharts';
-
-const processColors: Record<string, string> = {
-  Cativa: 'hsl(160, 84%, 39%)',
-  AO_Plus: 'hsl(25, 95%, 53%)',
-  Monsanto: 'hsl(45, 93%, 47%)',
-  Wacker: 'hsl(210, 100%, 56%)',
-  Fermentacion: 'hsl(330, 80%, 60%)',
-};
+import { comparisonData } from '@/data/market';
 
 export default function ComparisonSection() {
   return (
     <section id="comparison" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <span className="tag-yellow mb-4 inline-block">Comparativa</span>
+          <span className="tag-yellow mb-4 inline-block">Comparativa Técnica</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Tabla Comparativa Maestra
           </h2>
           <p className="text-[hsl(215,14%,55%)] max-w-2xl mx-auto text-lg">
-            Comparación directa de parámetros técnicos y económicos entre los 6 procesos industriales.
+            Comparación directa de parámetros técnicos y de operación entre los 6 procesos industriales.
+            Datos extraídos de Ullmann's Encyclopedia, patentes y literatura revisada por pares.
           </p>
         </div>
 
         {/* Comparison table */}
-        <div className="glass rounded-2xl overflow-hidden mb-16">
+        <div className="glass rounded-2xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -55,31 +47,17 @@ export default function ComparisonSection() {
           </div>
         </div>
 
-        {/* Radar chart */}
-        <div className="glass rounded-2xl p-6 md:p-8">
-          <h3 className="text-xl font-semibold text-white mb-6 text-center">Perfil Multidimensional por Proceso</h3>
-          <div className="h-[400px] md:h-[450px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="70%">
-                <PolarGrid stroke="hsla(215, 14%, 30%, 0.3)" />
-                <PolarAngleAxis dataKey="metric" tick={{ fill: 'hsl(215, 14%, 55%)', fontSize: 11 }} />
-                {Object.keys(processColors).map(key => (
-                  <Radar
-                    key={key}
-                    name={key.replace('_', ' ')}
-                    dataKey={key}
-                    stroke={processColors[key]}
-                    fill={processColors[key]}
-                    fillOpacity={0.08}
-                    strokeWidth={2}
-                  />
-                ))}
-                <Legend
-                  wrapperStyle={{ fontSize: '12px', color: 'hsl(215, 14%, 55%)' }}
-                  formatter={(value: string) => <span style={{ color: 'hsl(215, 14%, 65%)' }}>{value}</span>}
-                />
-              </RadarChart>
-            </ResponsiveContainer>
+        {/* Technical note */}
+        <div className="mt-8 glass-blue rounded-xl p-6 flex items-start gap-4">
+          <span className="text-2xl">📋</span>
+          <div>
+            <h4 className="text-sm font-semibold text-[hsl(210,100%,65%)] mb-2">Nota Metodológica</h4>
+            <p className="text-xs text-[hsl(215,14%,60%)] leading-relaxed">
+              Los valores presentados corresponden a condiciones típicas de operación reportadas en la literatura técnica
+              (Ullmann's Encyclopedia of Industrial Chemistry, patentes US 3,769,329 y EP 0643034, y artículos en
+              Journal of the American Chemical Society). Las cifras de costo y energía pueden variar según escala,
+              integración energética y mix energético regional. TRL = Technology Readiness Level (NASA scale).
+            </p>
           </div>
         </div>
       </div>
