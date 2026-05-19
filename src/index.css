@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Engineering Dark Theme */
+    --background: 220 20% 4%;
+    --foreground: 210 20% 92%;
+    --card: 220 18% 7%;
+    --card-foreground: 210 20% 92%;
+    --popover: 220 18% 7%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 220 20% 4%;
+    --secondary: 220 14% 14%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 14% 50%;
+    --accent: 25 95% 53%;
+    --accent-foreground: 220 20% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 14% 16%;
+    --input: 220 14% 16%;
+    --ring: 160 84% 39%;
+    --radius: 0.75rem;
+
+    /* Custom palette */
+    --green-glow: 160 84% 39%;
+    --orange-accent: 25 95% 53%;
+    --yellow-highlight: 45 93% 47%;
+    --blue-link: 210 100% 56%;
+    --pink-glass: 330 80% 60%;
+    --cyan-data: 185 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  code, pre, .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* ── Glassmorphism Utilities ── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-green {
+  background: hsla(160, 84%, 39%, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsla(160, 84%, 39%, 0.12);
+}
+
+.glass-pink {
+  background: hsla(330, 80%, 60%, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsla(330, 80%, 60%, 0.10);
+}
+
+.glass-orange {
+  background: hsla(25, 95%, 53%, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsla(25, 95%, 53%, 0.10);
+}
+
+.glass-blue {
+  background: hsla(210, 100%, 56%, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsla(210, 100%, 56%, 0.10);
+}
+
+/* ── Glow effects ── */
+.glow-green {
+  box-shadow: 0 0 30px hsla(160, 84%, 39%, 0.15), 0 0 60px hsla(160, 84%, 39%, 0.05);
+}
+
+.glow-orange {
+  box-shadow: 0 0 30px hsla(25, 95%, 53%, 0.15), 0 0 60px hsla(25, 95%, 53%, 0.05);
+}
+
+.glow-text-green {
+  text-shadow: 0 0 20px hsla(160, 84%, 39%, 0.4);
+}
+
+.glow-text-orange {
+  text-shadow: 0 0 20px hsla(25, 95%, 53%, 0.4);
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(220, 20%, 4%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsla(160, 84%, 39%, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsla(160, 84%, 39%, 0.5);
+}
+
+/* ── Animations ── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ── Grid pattern background ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Section transitions ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsla(160, 84%, 39%, 0.3),
+    hsla(25, 95%, 53%, 0.3),
+    transparent
+  );
+}
+
+/* ── Recharts customization ── */
+.recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+.recharts-text {
+  fill: hsl(215, 14%, 50%) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 11px !important;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: hsla(220, 18%, 7%, 0.95) !important;
+  border: 1px solid hsla(160, 84%, 39%, 0.2) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* ── Tag / Badge styles ── */
+.tag-green {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background: hsla(160, 84%, 39%, 0.12);
+  color: hsl(160, 84%, 55%);
+  border: 1px solid hsla(160, 84%, 39%, 0.2);
+}
+
+.tag-orange {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background: hsla(25, 95%, 53%, 0.12);
+  color: hsl(25, 95%, 65%);
+  border: 1px solid hsla(25, 95%, 53%, 0.2);
+}
+
+.tag-blue {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background: hsla(210, 100%, 56%, 0.12);
+  color: hsl(210, 100%, 70%);
+  border: 1px solid hsla(210, 100%, 56%, 0.2);
+}
+
+.tag-yellow {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background: hsla(45, 93%, 47%, 0.12);
+  color: hsl(45, 93%, 60%);
+  border: 1px solid hsla(45, 93%, 47%, 0.2);
+}
+
+.tag-pink {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background: hsla(330, 80%, 60%, 0.12);
+  color: hsl(330, 80%, 72%);
+  border: 1px solid hsla(330, 80%, 60%, 0.2);
+}

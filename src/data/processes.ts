@@ -1,0 +1,243 @@
+export interface Process {
+  id: string;
+  name: string;
+  fullName: string;
+  developer: string;
+  year: number;
+  status: 'dominante' | 'activo' | 'en-declive' | 'obsoleto' | 'emergente';
+  statusLabel: string;
+  tagColor: string;
+  catalyst: string;
+  temperature: string;
+  pressure: string;
+  selectivity: string;
+  coSelectivity: string;
+  productivity: string;
+  waterContent: string;
+  energy: string;
+  cost: string;
+  scale: string;
+  trl: number;
+  marketShare: string;
+  description: string;
+  advantages: string[];
+  disadvantages: string[];
+  keyFact: string;
+}
+
+export const processes: Process[] = [
+  {
+    id: 'cativa',
+    name: 'Cativa',
+    fullName: 'Proceso Cativa (Ir-catalyzed Carbonylation)',
+    developer: 'BP Chemicals / INEOS',
+    year: 1995,
+    status: 'dominante',
+    statusLabel: 'Dominante',
+    tagColor: 'green',
+    catalyst: 'Iridio (Ir) + Rutenio (Ru)',
+    temperature: '180–195 °C',
+    pressure: '30–40 bar',
+    selectivity: '>99% (MeOH)',
+    coSelectivity: '>94% (CO)',
+    productivity: '~50 mol/L/h',
+    waterContent: '0.5–5%',
+    energy: '4.2–4.7 MJ/kg',
+    cost: '~$330/ton',
+    scale: '500–1,300 kt/a',
+    trl: 9,
+    marketShare: '70–85%',
+    description: 'El proceso dominante a nivel mundial. Opera con muy baja agua, eliminando las ineficiencias del proceso Monsanto. Productividad 5x mayor.',
+    advantages: [
+      '30% menos energía que Monsanto',
+      '30% menos CAPEX para nuevas plantas',
+      'Producto más puro (<200 ppm ác. propiónico)',
+      'Catalizador estable a baja agua',
+      'Payback de retrofit <2 años',
+    ],
+    disadvantages: [
+      'Requiere Ir+Ru (metales nobles)',
+      'Corrosión por HI persiste',
+      'Tecnología propietaria INEOS',
+    ],
+    keyFact: 'La adición oxidativa de CH₃I al Ir es ~150× más rápida que al Rh',
+  },
+  {
+    id: 'ao-plus',
+    name: 'AO Plus',
+    fullName: 'Proceso AO Plus (Celanese)',
+    developer: 'Celanese Corporation',
+    year: 1985,
+    status: 'activo',
+    statusLabel: 'Líder en Costo',
+    tagColor: 'orange',
+    catalyst: 'Rodio (Rh) + Yoduro de Litio (LiI)',
+    temperature: '180–195 °C',
+    pressure: '30–40 bar',
+    selectivity: '>99% (MeOH)',
+    coSelectivity: '~90% (CO)',
+    productivity: '~30 mol/L/h',
+    waterContent: '0.5–5%',
+    energy: '<4.0 MJ/kg',
+    cost: '$326/ton',
+    scale: '500–1,300 kt/a',
+    trl: 9,
+    marketShare: '~15%',
+    description: 'Variante optimizada del Monsanto con LiI que permite operar a baja agua con Rh. Tiene el costo de producción más bajo documentado del mundo.',
+    advantages: [
+      'Costo más bajo del mundo: $326/ton',
+      'CAPEX unitario más bajo: $233/ton capacidad',
+      'Planta más grande: Clear Lake 1.3 Mt/a',
+      'Proyecto ECO-CC: captura 180 kt CO₂/año',
+    ],
+    disadvantages: [
+      'Tecnología exclusiva Celanese',
+      'Requiere escala >500 kt para ser óptimo',
+      'Rh sigue siendo costoso ($5,200/oz)',
+    ],
+    keyFact: 'Clear Lake, Texas es la planta de ácido acético más grande del mundo: 1.3 Mt/año',
+  },
+  {
+    id: 'monsanto',
+    name: 'Monsanto',
+    fullName: 'Proceso Monsanto (Rh-catalyzed Carbonylation)',
+    developer: 'Monsanto Company',
+    year: 1968,
+    status: 'en-declive',
+    statusLabel: 'Legado',
+    tagColor: 'yellow',
+    catalyst: 'Rodio (Rh) 200–400 ppm + CH₃I',
+    temperature: '150–200 °C',
+    pressure: '30–60 bar',
+    selectivity: '>99% (MeOH)',
+    coSelectivity: '~85% (CO)',
+    productivity: '~10 mol/L/h',
+    waterContent: '14–15%',
+    energy: '5.8 MJ/kg',
+    cost: '~$350/ton',
+    scale: '150–500 kt/a',
+    trl: 9,
+    marketShare: '~20%',
+    description: 'El proceso pionero que revolucionó la industria en 1970. Aunque tecnológicamente superado, sigue operando en plantas legado y es la base conceptual de todas las tecnologías modernas.',
+    advantages: [
+      'Más de 50 años de operación comercial',
+      'Selectividad >99% sobre metanol',
+      'Base conceptual para Cativa y AO+',
+      'Proceso bien caracterizado',
+    ],
+    disadvantages: [
+      'Requiere 14-15% agua (costos de separación)',
+      'Rh precipita como RhI₃ a baja pCO',
+      'Productividad 5x menor que Cativa',
+      'Selectividad CO solo ~85%',
+    ],
+    keyFact: 'Descubierto por Paulik y Roth en 1968; primera planta comercial en 1970 (Texas City)',
+  },
+  {
+    id: 'wacker',
+    name: 'Wacker',
+    fullName: 'Proceso Wacker (Oxidación de Acetaldehído)',
+    developer: 'Wacker Chemie / Hoechst',
+    year: 1959,
+    status: 'en-declive',
+    statusLabel: 'En Declive',
+    tagColor: 'yellow',
+    catalyst: 'PdCl₂/CuCl₂ + Mn(OAc)₂',
+    temperature: '120–130 °C',
+    pressure: '3–10 bar',
+    selectivity: '~94% (Wacker)',
+    coSelectivity: 'N/A',
+    productivity: 'Moderada',
+    waterContent: 'N/A',
+    energy: '8–12 MJ/kg',
+    cost: '~$400/ton',
+    scale: '<200 kt/a',
+    trl: 9,
+    marketShare: '<3%',
+    description: 'Proceso en dos etapas: etileno → acetaldehído → ácido acético. Dominó el mercado antes de la carbonilación. Solo Showa Denko Oita (Japón) opera significativamente.',
+    advantages: [
+      'Baja presión de operación (3-10 bar)',
+      'Tecnología madura',
+    ],
+    disadvantages: [
+      'Etileno más caro que metanol',
+      'Subproductos clorados tóxicos',
+      'Corrosión severa por HCl',
+      'Selectividad global ~85%',
+      'Declive estructural desde 1974',
+    ],
+    keyFact: 'Lección histórica: tecnologías con corrosión severa siempre pierden a largo plazo',
+  },
+  {
+    id: 'lpo',
+    name: 'LPO',
+    fullName: 'Oxidación de Hidrocarburos (Liquid Phase Oxidation)',
+    developer: 'Celanese / BP',
+    year: 1952,
+    status: 'obsoleto',
+    statusLabel: 'Obsoleto',
+    tagColor: 'pink',
+    catalyst: 'Co/Cr acetatos',
+    temperature: '150–230 °C',
+    pressure: '50–60 bar',
+    selectivity: '40–70%',
+    coSelectivity: 'N/A',
+    productivity: 'Baja',
+    waterContent: 'N/A',
+    energy: '>60 MJ/kg',
+    cost: '~$500/ton',
+    scale: '<250 kt/a',
+    trl: 9,
+    marketShare: '0%',
+    description: 'Oxidación de butano/nafta a ácido acético. Requería 13+ columnas de destilación. La última planta (BP Hull) cerró en los 90s. Celanese Pampa cerró en 2009.',
+    advantages: [
+      'Feedstock barato (butano)',
+      'Múltiples co-productos',
+    ],
+    disadvantages: [
+      'Selectividad inaceptable (40-70%)',
+      '13+ columnas de destilación',
+      'Consumo energético 12x mayor que Cativa',
+      'Emisiones VOC 12x mayores',
+      'Riesgo de explosión (Pampa 1987)',
+    ],
+    keyFact: 'Lección clave: el costo de purificación puede ser más determinante que el costo del feedstock',
+  },
+  {
+    id: 'fermentacion',
+    name: 'Fermentación',
+    fullName: 'Fermentación y Bio-Rutas',
+    developer: 'Again Bio / Sekab / Jubilant',
+    year: 2020,
+    status: 'emergente',
+    statusLabel: 'Emergente',
+    tagColor: 'blue',
+    catalyst: 'Bacterias (Acetobacter / Acetógenos)',
+    temperature: '27–37 °C',
+    pressure: '1 bar (atm)',
+    selectivity: '0.55 g/g',
+    coSelectivity: 'N/A',
+    productivity: 'Baja',
+    waterContent: 'N/A',
+    energy: '50–250 MJ/kg',
+    cost: '$746–903/ton',
+    scale: '<50 kt/a',
+    trl: 6,
+    marketShare: '<1%',
+    description: 'Rutas biológicas desde biomasa, syngas o CO₂. Again Bio tiene contrato comercial de 50 kt/año con HELM. El valor está en los créditos de carbono, no en el commodity.',
+    advantages: [
+      'Potencial huella de carbono negativa',
+      'Feedstock renovable (CO₂, biomasa)',
+      'Condiciones suaves (T ambiente, P atm)',
+      'Certificación ISCC posible',
+    ],
+    disadvantages: [
+      'Costo 2-4x mayor que carbonilación',
+      'Purificación consume 50-250 MJ/kg',
+      'Inhibición microbiana a >34 g/L',
+      'CAPEX 7-9x mayor que AO+',
+      'Escala limitada (<50 kt/a)',
+    ],
+    keyFact: 'Contrato Again Bio-HELM: 50 kt/año × 10 años — el modelo es "carbon-as-a-service"',
+  },
+];
