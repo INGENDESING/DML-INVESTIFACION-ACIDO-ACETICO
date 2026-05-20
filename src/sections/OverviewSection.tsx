@@ -1,3 +1,5 @@
+import AnimatedPFD from '../components/AnimatedPFD';
+
 const techParams = [
   { label: 'Temperatura', value: '27–230', unit: '°C', note: 'Aerobio a LPO' },
   { label: 'Presión', value: '1–80', unit: 'bar', note: 'Atmósfera a alta presión' },
@@ -72,10 +74,10 @@ export default function OverviewSection() {
           </div>
         </div>
 
-        {/* Imagen: Rutas de producción */}
-        <div className="mt-12 glass rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-semibold text-white mb-6">Rutas de Producción (Visión General)</h3>
-          <img src="/images/fig1_production_routes.png" alt="Rutas de Producción" className="mx-auto rounded-lg shadow-xl max-w-3xl w-full h-auto border border-[hsla(255,255,255,0.1)]" />
+        {/* Diagrama PFD Animado */}
+        <div className="mt-12 p-2">
+          <h3 className="text-xl font-semibold text-white mb-6 text-center">Diagrama de Flujo de Proceso (Carbonilación)</h3>
+          <AnimatedPFD />
         </div>
 
         {/* Procesos cubiertos */}
