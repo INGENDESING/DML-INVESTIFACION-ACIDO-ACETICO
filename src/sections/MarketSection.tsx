@@ -24,9 +24,10 @@ export default function MarketSection() {
         <div className="text-center mb-16">
           <span className="tag-blue mb-4 inline-block">Mercado Global</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Distribución y Tendencias</h2>
-          <p className="text-[hsl(215,14%,55%)] max-w-2xl mx-auto text-lg">
+          <p className="text-[hsl(215,14%,55%)] max-w-2xl mx-auto text-lg mb-8">
             China domina con el 55% de la capacidad global. Asia-Pacífico concentra más del 75%.
           </p>
+          <img src="/images/fig3_market_overview.png" alt="Market Overview" className="mx-auto rounded-lg shadow-xl max-w-3xl w-full h-auto border border-[hsla(255,255,255,0.1)] mb-12" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-10">

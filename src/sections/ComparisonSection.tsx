@@ -9,10 +9,11 @@ export default function ComparisonSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Tabla Comparativa Maestra
           </h2>
-          <p className="text-[hsl(215,14%,55%)] max-w-2xl mx-auto text-lg">
-            Comparación directa de parámetros técnicos y de operación entre los 6 procesos industriales.
+          <p className="text-[hsl(215,14%,55%)] max-w-2xl mx-auto text-lg mb-8">
+            Comparación directa de parámetros técnicos y de operación entre los procesos industriales.
             Datos extraídos de Ullmann's Encyclopedia, patentes y literatura revisada por pares.
           </p>
+          <img src="/images/fig2_process_comparison.png" alt="Comparativa de Procesos" className="mx-auto rounded-lg shadow-xl max-w-4xl w-full h-auto border border-[hsla(255,255,255,0.1)] mb-12" />
         </div>
 
         {/* Comparison table */}
@@ -24,6 +25,7 @@ export default function ComparisonSection() {
                   <th className="p-4 text-left text-[hsl(215,14%,50%)] font-medium">Parámetro</th>
                   <th className="p-4 text-center text-[hsl(45,93%,55%)] font-medium">Monsanto</th>
                   <th className="p-4 text-center text-[hsl(160,84%,55%)] font-medium">Cativa</th>
+                  <th className="p-4 text-center text-[hsl(160,84%,39%)] font-medium">Acetica</th>
                   <th className="p-4 text-center text-[hsl(25,95%,60%)] font-medium">AO Plus</th>
                   <th className="p-4 text-center text-[hsl(210,100%,65%)] font-medium">Wacker</th>
                   <th className="p-4 text-center text-[hsl(330,80%,65%)] font-medium hidden md:table-cell">LPO</th>
@@ -36,6 +38,7 @@ export default function ComparisonSection() {
                     <td className="p-4 text-[hsl(215,14%,55%)] font-medium mono text-xs">{row.param}</td>
                     <td className="p-4 text-center text-[hsl(215,14%,65%)] mono text-xs">{row.monsanto}</td>
                     <td className="p-4 text-center text-[hsl(215,14%,65%)] mono text-xs">{row.cativa}</td>
+                    <td className="p-4 text-center text-[hsl(215,14%,65%)] mono text-xs">{row.acetica}</td>
                     <td className="p-4 text-center text-[hsl(215,14%,65%)] mono text-xs">{row.aoPlus}</td>
                     <td className="p-4 text-center text-[hsl(215,14%,65%)] mono text-xs">{row.wacker}</td>
                     <td className="p-4 text-center text-[hsl(215,14%,65%)] mono text-xs hidden md:table-cell">{row.lpo}</td>

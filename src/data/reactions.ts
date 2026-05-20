@@ -24,8 +24,8 @@ export const mechanisms: ReactionMechanism[] = [
   {
     id: 'monsanto',
     processName: 'Proceso Monsanto (Rh)',
-    overallEquation: 'CH₃OH + CO → CH₃COOH',
-    enthalpy: 'ΔH = −135.3 kJ/mol',
+    overallEquation: 'CH₃OH(l) + CO(g) → CH₃COOH(l)',
+    enthalpy: 'ΔH°₂₉₈ = −135.6 kJ/mol',
     steps: [
       {
         step: 1,
@@ -54,7 +54,7 @@ export const mechanisms: ReactionMechanism[] = [
       },
     ],
     kinetics: {
-      rateLaw: 'Rate = k[Rh(CO)₂I₂⁻][CH₃I]',
+      rateLaw: 'r = k[Rh(CO)₂I₂⁻][CH₃I] (mol L⁻¹ s⁻¹)',
       activationEnthalpy: 'ΔH‡ = 63.6 kJ/mol',
       activationEntropy: 'ΔS‡ = −116 J/(mol·K)',
       rateDeterminingStep: 1,
@@ -63,14 +63,14 @@ export const mechanisms: ReactionMechanism[] = [
   {
     id: 'cativa',
     processName: 'Proceso Cativa (Ir + Ru)',
-    overallEquation: 'CH₃OH + CO → CH₃COOH',
-    enthalpy: 'ΔH = −135.3 kJ/mol',
+    overallEquation: 'CH₃OH(l) + CO(g) → CH₃COOH(l)',
+    enthalpy: 'ΔH°₂₉₈ = −135.6 kJ/mol',
     steps: [
       {
         step: 1,
         title: 'Adición Oxidativa (150× más rápida que Rh)',
         equation: '[Ir(CO)₂I₂]⁻ + CH₃I → [Ir(CH₃)(CO)₂I₃]⁻',
-        description: 'La adición oxidativa de CH₃I al centro de Ir(I) es aproximadamente 150 veces más rápida que al Rh(I), permitiendo productividades de ~50 mol/L/h.',
+        description: 'La adición oxidativa de CH₃I al centro de Ir(I) es aproximadamente 150 veces más rápida que al Rh(I), permitiendo productividades de ~50 mol L⁻¹ h⁻¹.',
       },
       {
         step: 2,
@@ -93,15 +93,35 @@ export const mechanisms: ReactionMechanism[] = [
       },
     ],
     kinetics: {
-      rateLaw: 'Rate = k[Ir(CO)₂I₂⁻][CH₃I] (promovida por Ru)',
+      rateLaw: 'r = k[Ir][CO]/[I⁻] (mol L⁻¹ s⁻¹) (promovida por Ru)',
       rateDeterminingStep: 1,
     },
   },
   {
+    id: 'acetica',
+    processName: 'Proceso Acetica (KBR/Chiyoda - Rh Heterogéneo)',
+    overallEquation: 'CH₃OH(l) + CO(g) → CH₃COOH(l)',
+    enthalpy: 'ΔH°₂₉₈ = −135.6 kJ/mol',
+    steps: [
+      {
+        step: 1,
+        title: 'Adsorción y Reacción',
+        equation: '[Rh(CO)₂I₂]⁻(sólido) + CH₃I(líquido) → Complejo Acilo',
+        description: 'La química es similar al proceso Monsanto (catálisis por rodio), pero el centro activo [Rh(CO)₂I₂]⁻ está inmovilizado mediante enlaces iónicos fuertes en una resina de polivinilpiridina (PVP).',
+      },
+      {
+        step: 2,
+        title: 'Transferencia de Masa en Columna de Burbujas',
+        equation: 'CO(g) → CO(l) → CO(superficie catalizador)',
+        description: 'El CO se transfiere a la fase líquida y reacciona en la superficie de la resina sólida. La ausencia de agitación mecánica reduce la pérdida de energía y el riesgo de fugas.',
+      }
+    ],
+  },
+  {
     id: 'wacker',
     processName: 'Proceso Wacker (Pd/Cu)',
-    overallEquation: 'C₂H₄ + ½O₂ → CH₃CHO → CH₃COOH',
-    enthalpy: 'ΔH₁ = −244 kJ/mol (etileno → acetaldehído); ΔH₂ = −294 kJ/mol (acetaldehído → ácido acético)',
+    overallEquation: 'C₂H₄(g) + ½O₂(g) → CH₃CHO(l) → CH₃COOH(l)',
+    enthalpy: 'ΔH°₂₉₈ = −538 kJ/mol (reacción global)',
     steps: [
       {
         step: 1,
@@ -126,14 +146,14 @@ export const mechanisms: ReactionMechanism[] = [
         title: 'Oxidación de Acetaldehído a Ácido Acético',
         equation: 'CH₃CHO + ½O₂ → CH₃COOH (Mn(OAc)₂ como catalizador)',
         description: 'Oxidación líquida del acetaldehído mediante mecanismo de radicales libres con ácido peracético como intermediario. El acetato de manganeso (0.5%) acelera la descomposición de peróxidos.',
-        notes: 'T = 50–80 °C; P = 3–10 bar; selectividad >94%',
+        notes: 'T = 50–80 °C; P = 3–10 barg; selectividad >94%',
       },
     ],
   },
   {
     id: 'lpo',
     processName: 'LPO (Oxidación de Hidrocarburos)',
-    overallEquation: 'n-C₄H₁₀ + ⁵⁄₂O₂ → 2CH₃COOH + H₂O',
+    overallEquation: 'n-C₄H₁₀(l) + ⁵⁄₂O₂(g) → 2CH₃COOH(l) + H₂O(l)',
     steps: [
       {
         step: 1,
@@ -146,16 +166,16 @@ export const mechanisms: ReactionMechanism[] = [
         title: 'Propagación Radical',
         equation: 'R· + O₂ → ROO· → productos oxidados',
         description: 'Mecanismo de radicales libres en fase líquida. La oxidación no selectiva produce mezcla de ácidos carboxílicos (acético, propiónico, fórmico).',
-        notes: 'T = 150–200 °C; P = 48–62 bar; conversión butano 10–20%',
+        notes: 'T = 150–200 °C; P = 48–62 barg; conversión butano 10–20%',
       },
     ],
   },
 ];
 
 export const overallReactions = [
-  { id: 'carbonylation', name: 'Carbonilación de Metanol', equation: 'CH₃OH + CO → CH₃COOH', conditions: '150–200 °C, 30–60 bar, catalizador Rh/Ir' },
-  { id: 'wacker', name: 'Wacker (Etileno → Acetaldehído)', equation: 'C₂H₄ + ½O₂ → CH₃CHO', conditions: '120–130 °C, 3–10 bar, PdCl₂/CuCl₂' },
-  { id: 'acetaldehyde_ox', name: 'Oxidación de Acetaldehído', equation: 'CH₃CHO + ½O₂ → CH₃COOH', conditions: '50–80 °C, 3–10 bar, Mn(OAc)₂' },
-  { id: 'lpo', name: 'LPO (Butano)', equation: 'n-C₄H₁₀ + ⁵⁄₂O₂ → 2CH₃COOH + H₂O', conditions: '150–200 °C, 48–62 bar, acetato de Co' },
-  { id: 'fermentation', name: 'Fermentación Aeróbica', equation: 'C₂H₅OH + O₂ → CH₃COOH + H₂O', conditions: '27–37 °C, 1 bar, Acetobacter' },
+  { id: 'carbonylation', name: 'Carbonilación de Metanol', equation: 'CH₃OH + CO → CH₃COOH', conditions: '150–200 °C, 30–60 barg, catalizador Rh/Ir' },
+  { id: 'wacker', name: 'Wacker (Etileno → Acetaldehído)', equation: 'C₂H₄ + ½O₂ → CH₃CHO', conditions: '120–130 °C, 3–10 barg, PdCl₂/CuCl₂' },
+  { id: 'acetaldehyde_ox', name: 'Oxidación de Acetaldehído', equation: 'CH₃CHO + ½O₂ → CH₃COOH', conditions: '50–80 °C, 3–10 barg, Mn(OAc)₂' },
+  { id: 'lpo', name: 'LPO (Butano)', equation: 'n-C₄H₁₀ + ⁵⁄₂O₂ → 2CH₃COOH + H₂O', conditions: '150–200 °C, 48–62 barg, acetato de Co' },
+  { id: 'fermentation', name: 'Fermentación Aeróbica', equation: 'C₂H₅OH + O₂ → CH₃COOH + H₂O', conditions: '27–37 °C, 1.013 bara, Acetobacter' },
 ];

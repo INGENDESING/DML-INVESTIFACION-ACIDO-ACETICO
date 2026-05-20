@@ -31,6 +31,17 @@ const mechanismDetails: Record<string, { species: string; promoter: string; mech
       'ΔG‡ reducida ~20 kJ/mol por efecto del promotor Ru',
     ],
   },
+  acetica: {
+    species: '[Rh(CO)₂I₂]⁻ (soportado en polivinilpiridina)',
+    promoter: 'CH₃I (sin promotores adicionales)',
+    mechanism: 'Mecanismo análogo a Monsanto, pero anclado en fase sólida mediante enlaces iónicos fuertes. Se lleva a cabo en un reactor de columna de burbujas (bubble column), facilitando transferencia de masa sin agitación mecánica.',
+    kinetics: 'Productividad controlada por transferencia gas-líquido-sólido. Selectividad CO ~94% debido a H₂O <2%.',
+    notes: [
+      'Retención de catalizador >99.9% (no requiere purificación agresiva de Rh)',
+      'T = 160-200 °C, P = 30-60 barg',
+      'Minimiza riesgos de fugas al no usar sellos mecánicos para agitación',
+    ],
+  },
   'ao-plus': {
     species: '[Rh(CO)₂I₂]⁻',
     promoter: 'CH₃I + LiI (concentración optimizada)',

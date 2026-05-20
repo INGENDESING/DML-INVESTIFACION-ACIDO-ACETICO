@@ -1,8 +1,8 @@
 export const globalStats = {
   capacity: { value: 20000, unit: 'kt/año', label: 'Capacidad Global 2024' },
-  marketValue: { value: 16.8, unit: 'B USD', label: 'Valor de Mercado' },
-  cagr: { value: 5.2, unit: '%', label: 'CAGR Proyectado' },
-  carbonylation: { value: 84, unit: '%', label: 'Carbonilación de Metanol' },
+  marketValue: { value: 19.9, unit: 'B USD', label: 'Valor de Mercado 2025' },
+  cagr: { value: 6.5, unit: '%', label: 'CAGR Proyectado' },
+  carbonylation: { value: 85, unit: '%', label: 'Carbonilación de Metanol' },
   chinaShare: { value: 55, unit: '%', label: 'Capacidad China' },
 };
 
@@ -47,20 +47,20 @@ export const marketEvolution = [
 ];
 
 export const comparisonData = [
-  { param: 'T (°C)', monsanto: '150–200', cativa: '180–195', aoPlus: '180–195', wacker: '120–130', lpo: '150–230', fermentacion: '27–37' },
-  { param: 'P (bar)', monsanto: '30–60', cativa: '30–40', aoPlus: '30–40', wacker: '3–10', lpo: '50–60', fermentacion: '1' },
-  { param: 'Catalizador', monsanto: 'Rh', cativa: 'Ir+Ru', aoPlus: 'Rh+LiI', wacker: 'Pd/Cu', lpo: 'Co/Cr', fermentacion: 'Bacterias' },
-  { param: 'Selectividad', monsanto: '>99%', cativa: '>99%', aoPlus: '>99%', wacker: '~89%', lpo: '40–70%', fermentacion: '0.55 g/g' },
-  { param: 'Energía (MJ/kg)', monsanto: '5.8', cativa: '4.2–4.7', aoPlus: '<4.0', wacker: '8–12', lpo: '>60', fermentacion: '50–250' },
-  { param: 'Costo (USD/t)', monsanto: '~350', cativa: '~330', aoPlus: '~326', wacker: '~400', lpo: '~500', fermentacion: '746–903' },
-  { param: 'TRL', monsanto: '9', cativa: '9', aoPlus: '9', wacker: '9', lpo: '9', fermentacion: '6–7' },
+  { param: 'T (°C)', monsanto: '150–200', cativa: '180–195', acetica: '160–200', aoPlus: '180–195', wacker: '120–130', lpo: '150–230', fermentacion: '27–37' },
+  { param: 'P (barg)', monsanto: '30–60', cativa: '30–40', acetica: '30–60', aoPlus: '30–40', wacker: '3–10', lpo: '50–60', fermentacion: '0 (1.013 bara)' },
+  { param: 'Catalizador', monsanto: 'Rh', cativa: 'Ir+Ru', acetica: 'Rh/PVP', aoPlus: 'Rh+LiI', wacker: 'Pd/Cu', lpo: 'Co/Cr', fermentacion: 'Bacterias' },
+  { param: 'Selectividad', monsanto: '>99%', cativa: '>99%', acetica: '~99%', aoPlus: '>99%', wacker: '~89%', lpo: '40–70%', fermentacion: '0.55 g/g' },
+  { param: 'Energía (MJ/kg)', monsanto: '5.8', cativa: '4.2–4.7', acetica: 'Muy bajo', aoPlus: '<4.0', wacker: '8–12', lpo: '>60', fermentacion: '50–250' },
+  { param: 'Costo (USD/t 2024)', monsanto: '~350', cativa: '~330', acetica: 'Competitivo', aoPlus: '~326', wacker: '~400', lpo: '~500', fermentacion: '746–1,073' },
+  { param: 'TRL', monsanto: '9', cativa: '9', acetica: '9', aoPlus: '9', wacker: '9', lpo: '9', fermentacion: '6–7' },
 ];
 
 export const radarData = [
-  { metric: 'Selectividad', Cativa: 99, AO_Plus: 99, Monsanto: 99, Wacker: 89, Fermentacion: 55 },
-  { metric: 'Efic. Energética', Cativa: 90, AO_Plus: 95, Monsanto: 65, Wacker: 40, Fermentacion: 15 },
-  { metric: 'Escala', Cativa: 95, AO_Plus: 95, Monsanto: 50, Wacker: 15, Fermentacion: 5 },
-  { metric: 'Costo', Cativa: 88, AO_Plus: 92, Monsanto: 80, Wacker: 70, Fermentacion: 30 },
-  { metric: 'Sostenibilidad', Cativa: 60, AO_Plus: 65, Monsanto: 50, Wacker: 40, Fermentacion: 90 },
-  { metric: 'Madurez', Cativa: 95, AO_Plus: 95, Monsanto: 95, Wacker: 95, Fermentacion: 60 },
+  { metric: 'Selectividad', Cativa: 99, Acetica: 98, AO_Plus: 99, Monsanto: 99, Wacker: 89, Fermentacion: 55 },
+  { metric: 'Efic. Energética', Cativa: 90, Acetica: 93, AO_Plus: 95, Monsanto: 65, Wacker: 40, Fermentacion: 15 },
+  { metric: 'Escala', Cativa: 95, Acetica: 80, AO_Plus: 95, Monsanto: 50, Wacker: 15, Fermentacion: 5 },
+  { metric: 'Costo', Cativa: 88, Acetica: 90, AO_Plus: 92, Monsanto: 80, Wacker: 70, Fermentacion: 30 },
+  { metric: 'Sostenibilidad', Cativa: 60, Acetica: 65, AO_Plus: 65, Monsanto: 50, Wacker: 40, Fermentacion: 90 },
+  { metric: 'Madurez', Cativa: 95, Acetica: 85, AO_Plus: 95, Monsanto: 95, Wacker: 95, Fermentacion: 60 },
 ];

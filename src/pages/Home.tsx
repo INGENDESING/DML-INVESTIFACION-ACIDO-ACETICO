@@ -1,11 +1,14 @@
 import HeroSection from '@/sections/HeroSection';
 import OverviewSection from '@/sections/OverviewSection';
+import MarketSection from '@/sections/MarketSection';
 import ProcessesSection from '@/sections/ProcessesSection';
 import ReactionsSection from '@/sections/ReactionsSection';
 import ProcessFlowSection from '@/sections/ProcessFlowSection';
 import RawMaterialsSection from '@/sections/RawMaterialsSection';
 import ComparisonSection from '@/sections/ComparisonSection';
 import TechnicalConclusionsSection from '@/sections/TechnicalConclusionsSection';
+import SustainabilitySection from '@/sections/SustainabilitySection';
+import ReferencesSection from '@/sections/ReferencesSection';
 import FooterSection from '@/sections/FooterSection';
 
 export default function Home() {
@@ -21,12 +24,13 @@ export default function Home() {
           <div className="flex items-center gap-1">
             {[
               { id: 'overview', label: 'Alcance' },
+              { id: 'market', label: 'Mercado' },
               { id: 'processes', label: 'Procesos' },
               { id: 'reactions', label: 'Reacciones' },
               { id: 'flows', label: 'Diagramas' },
-              { id: 'materials', label: 'Materias Primas' },
+              { id: 'materials', label: 'Insumos' },
               { id: 'comparison', label: 'Comparativa' },
-              { id: 'conclusions', label: 'Conclusiones' },
+              { id: 'sustainability', label: 'Sostenibilidad' },
             ].map(link => (
               <a
                 key={link.id}
@@ -42,12 +46,15 @@ export default function Home() {
 
       <HeroSection />
       <OverviewSection />
+      <MarketSection />
       <ProcessesSection />
       <ReactionsSection />
       <ProcessFlowSection />
       <RawMaterialsSection />
       <ComparisonSection />
       <TechnicalConclusionsSection />
+      <SustainabilitySection />
+      <ReferencesSection />
       <FooterSection />
     </div>
   );

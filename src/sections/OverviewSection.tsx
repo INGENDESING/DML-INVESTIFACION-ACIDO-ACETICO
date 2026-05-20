@@ -72,16 +72,23 @@ export default function OverviewSection() {
           </div>
         </div>
 
+        {/* Imagen: Rutas de producción */}
+        <div className="mt-12 glass rounded-2xl p-8 text-center">
+          <h3 className="text-xl font-semibold text-white mb-6">Rutas de Producción (Visión General)</h3>
+          <img src="/images/fig1_production_routes.png" alt="Rutas de Producción" className="mx-auto rounded-lg shadow-xl max-w-3xl w-full h-auto border border-[hsla(255,255,255,0.1)]" />
+        </div>
+
         {/* Procesos cubiertos */}
         <div className="mt-12 glass rounded-2xl p-8">
           <h3 className="text-lg font-semibold text-white mb-6 text-center">Procesos Industriales Cubiertos</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
               { name: 'Monsanto', detail: 'Rh-catalyzed carbonylation', status: 'Legado' },
               { name: 'Cativa', detail: 'Ir-catalyzed carbonylation', status: 'Dominante' },
+              { name: 'Acetica', detail: 'Rh heterogéneo (PVP)', status: 'Innovación' },
               { name: 'AO Plus', detail: 'Celanese optimized Rh', status: 'Líder en costo' },
               { name: 'Wacker', detail: 'Oxidación de acetaldehído', status: 'En declive' },
-              { name: 'LPO', detail: 'Oxidación de hidrocarburos', status: 'Obsoleto' },
+              { name: 'LPO', detail: 'Oxidación hidrocarburos', status: 'Obsoleto' },
               { name: 'Fermentación', detail: 'Rutas bio-basadas', status: 'Emergente' },
             ].map((p, i) => (
               <div key={i} className="bg-[hsl(220,18%,7%)] rounded-xl p-4 border border-[hsla(255,255,255,0.04)]">
