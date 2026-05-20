@@ -62,38 +62,38 @@
 
 /* ── Glassmorphism Utilities ── */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .glass-green {
-  background: hsla(160, 84%, 39%, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid hsla(160, 84%, 39%, 0.12);
+  background: hsla(160, 84%, 39%, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsla(160, 84%, 39%, 0.08);
 }
 
 .glass-pink {
-  background: hsla(330, 80%, 60%, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid hsla(330, 80%, 60%, 0.10);
+  background: hsla(330, 80%, 60%, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsla(330, 80%, 60%, 0.08);
 }
 
 .glass-orange {
-  background: hsla(25, 95%, 53%, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid hsla(25, 95%, 53%, 0.10);
+  background: hsla(25, 95%, 53%, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsla(25, 95%, 53%, 0.08);
 }
 
 .glass-blue {
-  background: hsla(210, 100%, 56%, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid hsla(210, 100%, 56%, 0.10);
+  background: hsla(210, 100%, 56%, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsla(210, 100%, 56%, 0.08);
 }
 
 /* ── Glow effects ── */

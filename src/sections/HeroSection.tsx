@@ -31,9 +31,11 @@ export default function HeroSection() {
 
       <div className={`relative z-10 text-center max-w-5xl mx-auto px-6 transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         {/* DML Badge */}
-        <div className="inline-flex items-center gap-2 glass-green rounded-full px-4 py-2 mb-8">
-          <img src="/logo-dml.png" alt="DML" className="h-5 w-auto" />
-          <span className="mono text-sm text-[hsl(160,84%,55%)]">DML Ingenieros Consultores · P10-11</span>
+        <div className="inline-flex items-center gap-3 glass-green rounded-full px-5 py-2.5 mb-8 hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_hsla(160,84%,39%,0.3)] border border-[hsl(160,84%,39%)]/30 cursor-pointer">
+          <img src="/logo-dml.png" alt="DML" className="h-6 w-auto drop-shadow-md" />
+          <span className="font-bold tracking-wide text-sm text-[hsl(160,84%,55%)]">DML INGENIEROS CONSULTORES</span>
+          <span className="text-white/30">|</span>
+          <span className="mono text-sm text-[hsl(215,14%,70%)]">PROYECTO P10-11</span>
         </div>
 
         {/* Main title */}
@@ -49,10 +51,17 @@ export default function HeroSection() {
         </h1>
 
         {/* Description */}
-        <p className="text-lg md:text-xl text-[hsl(215,14%,55%)] max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p className="text-lg md:text-xl text-[hsl(215,14%,55%)] max-w-3xl mx-auto mb-10 leading-relaxed">
           Revisión exhaustiva de 6 procesos industriales, 12 dimensiones de investigación técnica
           y análisis de mecanismos catalíticos, diagramas de proceso y materias primas.
         </p>
+
+        {/* Premium Button */}
+        <div className={`mb-12 transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          <a href="#overview" className="inline-block bg-[hsl(160,84%,39%)] hover:bg-[hsl(160,84%,45%)] text-white font-bold py-3 px-8 rounded-full shadow-[0_0_30px_hsla(160,84%,39%,0.5)] hover:shadow-[0_0_45px_hsla(160,84%,39%,0.8)] transition-all duration-300 hover:scale-[1.03]">
+            Explorar Investigación Técnica
+          </a>
+        </div>
 
         {/* Stats row — técnicos, no comerciales */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
