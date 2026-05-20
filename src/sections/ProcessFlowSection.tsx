@@ -13,9 +13,9 @@ function EquipmentBox({ children, label, className = '' }: { children: React.Rea
   );
 }
 
-function ReactorCSTR({ temp, pressure, detail }: { temp: string; pressure: string; detail?: string }) {
+function ReactorCSTR({ temp, pressure, detail, className = '' }: { temp: string; pressure: string; detail?: string; className?: string }) {
   return (
-    <EquipmentBox label="Reactor CSTR">
+    <EquipmentBox label="Reactor CSTR" className={className}>
       <div className="text-lg mb-1">⚗️</div>
       <div className="text-xs font-bold text-white">CSTR</div>
       <div className="text-[10px] text-[hsl(160,84%,55%)] mono mt-1">{temp}</div>
@@ -25,9 +25,9 @@ function ReactorCSTR({ temp, pressure, detail }: { temp: string; pressure: strin
   );
 }
 
-function ReactorPFR({ temp, pressure }: { temp: string; pressure: string }) {
+function ReactorPFR({ temp, pressure, className = '' }: { temp: string; pressure: string; className?: string }) {
   return (
-    <EquipmentBox label="Reactor PFR">
+    <EquipmentBox label="Reactor PFR" className={className}>
       <div className="w-16 h-8 border-2 border-[hsla(25,95%,53%,0.5)] rounded-full flex items-center justify-center bg-[hsla(25,95%,53%,0.05)]">
         <span className="text-[10px] font-bold text-[hsl(25,95%,60%)]">PFR</span>
       </div>
@@ -37,9 +37,9 @@ function ReactorPFR({ temp, pressure }: { temp: string; pressure: string }) {
   );
 }
 
-function FlashTank({ detail }: { detail?: string }) {
+function FlashTank({ detail, className = '' }: { detail?: string; className?: string }) {
   return (
-    <EquipmentBox label="Flash">
+    <EquipmentBox label="Flash" className={className}>
       <div className="w-12 h-12 rounded-full border-2 border-[hsla(210,100%,56%,0.5)] flex items-center justify-center bg-[hsla(210,100%,56%,0.05)]">
         <span className="text-lg">⬇</span>
       </div>
@@ -49,9 +49,9 @@ function FlashTank({ detail }: { detail?: string }) {
   );
 }
 
-function DistillationColumn({ label, tempTop, tempBot, detail }: { label: string; tempTop?: string; tempBot?: string; detail?: string }) {
+function DistillationColumn({ label, tempTop, tempBot, detail, className = '' }: { label: string; tempTop?: string; tempBot?: string; detail?: string; className?: string }) {
   return (
-    <EquipmentBox label={label}>
+    <EquipmentBox label={label} className={className}>
       <div className="flex flex-col items-center">
         <div className="w-10 h-20 border-2 border-[hsla(45,93%,47%,0.5)] rounded-lg flex flex-col justify-between py-2 bg-[hsla(45,93%,47%,0.05)]">
           <div className="w-full h-px bg-[hsla(45,93%,47%,0.3)]" />
@@ -67,43 +67,83 @@ function DistillationColumn({ label, tempTop, tempBot, detail }: { label: string
   );
 }
 
-function FlowArrow({ label, direction = 'right' }: { label?: string; direction?: 'right' | 'down' | 'up' | 'left' }) {
-  const rotate = { right: 'rotate-0', down: 'rotate-90', up: '-rotate-90', left: 'rotate-180' }[direction];
-  return (
-    <div className="flex flex-col items-center justify-center min-w-[60px]">
-      <div className={`text-[hsl(215,14%,40%)] ${rotate}`}>→</div>
-      {label && <span className="text-[9px] text-[hsl(215,14%,45%)] mono whitespace-nowrap">{label}</span>}
-    </div>
-  );
-}
 
 /* ── Process Flow Diagrams ── */
 
+function FlowDefs() {
+  return (
+    <defs>
+      <linearGradient id="stream-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="hsl(160, 84%, 39%)" stopOpacity="0.5" />
+        <stop offset="100%" stopColor="hsl(160, 84%, 55%)" />
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+  );
+}
+
 function MonsantoFlow() {
   return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
-        <ReactorCSTR temp="175–180 °C" pressure="30–40 bar" detail="Rh 200–400 ppm, CH₃I 1–5%" />
-        <FlowArrow label="Efluente" />
-        <FlashTank detail="Catalizador en fase líquida" />
-        <FlowArrow label="Líquido" />
-        <DistillationColumn label="Columna Livianos" tempTop="52 °C" tempBot="97 °C" detail="Separa CH₃COOCH₃, CH₃OH" />
-        <FlowArrow label="Fondos" />
-        <DistillationColumn label="Columna Secado" detail="Remueve H₂O (14–15%)" />
-        <FlowArrow label="Fondos" />
-        <DistillationColumn label="Purificación AA" tempTop="120 °C" tempBot="142 °C" detail=">99.5% glacial" />
-      </div>
+    <div className="w-full relative overflow-x-auto min-h-[500px]">
+      <div className="min-w-[1100px] h-[500px] relative mx-auto">
+        <svg viewBox="0 0 1100 500" className="w-full h-full absolute inset-0 z-0">
+          <FlowDefs />
 
-      {/* Recycle streams */}
-      <div className="flex justify-center">
-        <div className="glass-blue rounded-xl p-4 max-w-xl">
-          <h4 className="text-sm font-semibold text-[hsl(210,100%,65%)] mb-2">Reciclos Clave</h4>
-          <div className="space-y-1 text-xs text-[hsl(215,14%,60%)]">
-            <p>• Catalizador homogéneo: reciclado desde fondos del flash al CSTR (sin pérdida de Rh)</p>
-            <p>• CH₃I + acetato de metilo: reciclados desde cabeza del flash al reactor</p>
-            <p>• Agua: recirculada desde columna de secado; concentración crítica 14–15% en reactor</p>
-          </div>
-        </div>
+          {/* Main forward flow */}
+          <path d="M 220 250 L 320 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="270" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Efluente</text>
+          
+          <path d="M 460 250 L 560 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="510" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Líquido</text>
+
+          <path d="M 700 250 L 760 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="730" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Fondos</text>
+
+          <path d="M 900 250 L 960 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="930" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Fondos</text>
+
+          <path d="M 1100 250 L 1120 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+
+          {/* Recycles */}
+          {/* Catalizador Homogéneo */}
+          <path d="M 390 320 L 390 420 L 150 420 L 150 320" fill="none" stroke="hsl(210,100%,56%)" strokeWidth="2" strokeDasharray="6 6" className="animate-flow-reverse"/>
+          <text x="270" y="440" fill="hsl(210,100%,65%)" fontSize="10" textAnchor="middle">Reciclo Catalizador (Fase Líquida)</text>
+
+          {/* Promotor CH3I */}
+          <path d="M 630 180 L 630 80 L 150 80 L 150 180" fill="none" stroke="hsl(25,95%,53%)" strokeWidth="2" strokeDasharray="6 6" className="animate-flow-reverse"/>
+          <text x="390" y="70" fill="hsl(25,95%,60%)" fontSize="10" textAnchor="middle">Reciclo CH₃I + Acetato de Metilo</text>
+
+          {/* Agua */}
+          <path d="M 830 180 L 830 40 L 90 40 L 90 180" fill="none" stroke="hsl(185,80%,50%)" strokeWidth="2" strokeDasharray="6 6" className="animate-flow-reverse"/>
+          <text x="460" y="30" fill="hsl(185,80%,60%)" fontSize="10" textAnchor="middle">Recirculación de Agua (14-15%)</text>
+
+          {/* Equipment via foreignObject */}
+          <foreignObject x="80" y="180" width="140" height="140">
+            <ReactorCSTR temp="175–180 °C" pressure="30–40 bar" detail="Rh 200–400 ppm" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="320" y="180" width="140" height="140">
+            <FlashTank detail="Adiabático" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="560" y="180" width="140" height="140">
+            <DistillationColumn label="Columna Livianos" tempTop="52 °C" tempBot="97 °C" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="760" y="180" width="140" height="140">
+            <DistillationColumn label="Columna Secado" detail="Remueve H₂O" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="960" y="180" width="140" height="140">
+            <DistillationColumn label="Purificación AA" tempTop="120 °C" tempBot="142 °C" className="w-full" />
+          </foreignObject>
+        </svg>
       </div>
     </div>
   );
@@ -111,30 +151,57 @@ function MonsantoFlow() {
 
 function CativaFlow() {
   return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
-        <ReactorCSTR temp="180–195 °C" pressure="30–40 bar" detail="Ir 1,000–5,000 ppm, Ru 500–2,000 ppm" />
-        <FlowArrow label="Efluente" />
-        <ReactorPFR temp="180–195 °C" pressure="30–40 bar" />
-        <FlowArrow label="Efluente" />
-        <FlashTank detail="Catalizador reciclado a CSTR" />
-        <FlowArrow label="Líquido" />
-        <DistillationColumn label="Livianos + Secado" tempTop="52 °C" tempBot="97 °C" detail="Columna combinada (vs. 2 en Monsanto)" />
-        <FlowArrow label="Fondos" />
-        <DistillationColumn label="Purificación AA" tempTop="120 °C" tempBot="142 °C" detail=">99.8% glacial" />
-      </div>
+    <div className="w-full relative overflow-x-auto min-h-[500px]">
+      <div className="min-w-[1100px] h-[500px] relative mx-auto">
+        <svg viewBox="0 0 1100 500" className="w-full h-full absolute inset-0 z-0">
+          <FlowDefs />
 
-      {/* Recycle streams */}
-      <div className="flex justify-center">
-        <div className="glass-green rounded-xl p-4 max-w-xl">
-          <h4 className="text-sm font-semibold text-[hsl(160,84%,55%)] mb-2">Ventajas del Tren Cativa</h4>
-          <div className="space-y-1 text-xs text-[hsl(215,14%,60%)]">
-            <p>• Agua 0.5–5%: permite combinar columna de livianos con secado (1 columna menos)</p>
-            <p>• PFR secundario: mejora utilización de CO antes del flash</p>
-            <p>• Ir estable a baja agua: sin riesgo de precipitación como RhI₃</p>
-            <p>• Consumo de vapor 30% menor que Monsanto por menor recirculación de agua</p>
-          </div>
-        </div>
+          {/* Main forward flow */}
+          <path d="M 190 250 L 250 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="220" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Efluente</text>
+
+          <path d="M 390 250 L 450 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="420" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Efluente</text>
+
+          <path d="M 590 250 L 680 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="635" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Líquido</text>
+
+          <path d="M 820 250 L 890 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+          <text x="855" y="240" fill="hsl(215,14%,60%)" fontSize="10" textAnchor="middle">Fondos</text>
+
+          <path d="M 1030 250 L 1050 250" fill="none" stroke="url(#stream-gradient)" strokeWidth="4" className="path-stream animate-flow" filter="url(#glow)"/>
+
+          {/* Recycles */}
+          {/* Catalizador Homogéneo */}
+          <path d="M 520 320 L 520 420 L 120 420 L 120 320" fill="none" stroke="hsl(210,100%,56%)" strokeWidth="2" strokeDasharray="6 6" className="animate-flow-reverse"/>
+          <text x="320" y="440" fill="hsl(210,100%,65%)" fontSize="10" textAnchor="middle">Reciclo Catalizador (Ir + Ru)</text>
+
+          {/* Promotor / Livianos */}
+          <path d="M 750 180 L 750 80 L 120 80 L 120 180" fill="none" stroke="hsl(25,95%,53%)" strokeWidth="2" strokeDasharray="6 6" className="animate-flow-reverse"/>
+          <text x="435" y="70" fill="hsl(25,95%,60%)" fontSize="10" textAnchor="middle">Reciclo Livianos + CH₃I (Agua 0.5-5%)</text>
+
+
+          {/* Equipment via foreignObject */}
+          <foreignObject x="50" y="180" width="140" height="140">
+            <ReactorCSTR temp="180–195 °C" pressure="30–40 bar" detail="Ir 1-5k ppm, Ru 1-2k ppm" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="250" y="180" width="140" height="140">
+            <ReactorPFR temp="180–195 °C" pressure="30–40 bar" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="450" y="180" width="140" height="140">
+            <FlashTank detail="Cat. reciclado" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="680" y="180" width="140" height="140">
+            <DistillationColumn label="Livianos + Secado" detail="1 columna menos" className="w-full" />
+          </foreignObject>
+
+          <foreignObject x="890" y="180" width="140" height="140">
+            <DistillationColumn label="Purificación AA" tempTop="120 °C" tempBot="142 °C" className="w-full" />
+          </foreignObject>
+        </svg>
       </div>
     </div>
   );
